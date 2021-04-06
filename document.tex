@@ -2,10 +2,10 @@
 
 \usepackage[a4paper, top=30mm, bottom=20mm, left=10mm, right=10mm]{geometry}
 \usepackage[hangul]{kotex}
-\newcommand{\titleko}{람다 대수를 응용한 자연 연역 체계의 전산화에 관한 연구}
+\newcommand{\titleko}{람다 계산법을 응용한 자연 연역 체계의 전산화에 관한 연구}
 \newcommand{\titleen}{Computerizing natural deduction using lambda calculus}
 \newcommand{\authorname}{이상길}
-\newcommand{\getkeywords}{수학기초론, 람다 대수, 형식 체계}
+\newcommand{\getkeywords}{수학기초론, 람다 계산법, 형식 체계}
 \usepackage[pdfencoding=unicode,
 	pdfauthor={\authorname},
 	pdftitle={\titleko},
@@ -90,7 +90,7 @@
 	\maketitle
 	\begin{abstract}
 		\centering\begin{minipage}{\dimexpr\paperwidth-8cm}
-			\noindent 이 논문에서는 형식 체계를 만들고, 만들어진 형식 체계에서 컴퓨터에 의해 검증되는 증명을 할 수 있도록 하는 컴퓨터 프로그램을 만드는 방법에 관하여 연구한다. 이를 위하여 람다 대수를 기반으로 형식 언어를 만들며 가언적 추론을 지원하는 형식 체계를 만들었으며 컴퓨터 프로그램도 만들었다. 재미난 추론 규칙들을 갖는다. 재미난 정리들도 증명했다.
+			\noindent 이 논문에서는 형식 체계를 만들고, 만들어진 형식 체계에서 컴퓨터에 의해 검증되는 증명을 할 수 있도록 하는 컴퓨터 프로그램을 만드는 방법에 관하여 연구한다. 이를 위하여 람다 계산법을 기반으로 형식 언어를 만들며 가언적 추론을 지원하는 형식 체계를 만들었으며 컴퓨터 프로그램도 만들었다. 재미난 추론 규칙들을 갖는다. 재미난 정리들도 증명했다.
 			
 			\smallskip\noindent {\bf 주제어}: \getkeywords
 		\end{minipage}
@@ -102,7 +102,7 @@
 
 \section{서론}
 
-람다 대수의 타입 체계와 자연 연역 체계 간에 대응 관계가 있음은 잘 알려져 있다\cite{howard}.
+람다 계산법(lambda calculus)의 타입 체계와 자연 연역 체계 간에 대응 관계가 있음은 잘 알려져 있다\cite{howard}.
 
 형식 체계를 전산화하는 것은 필요하다. Metamath나 Coq 같은 것이 이미 있다. Metamath는 가언적 추론(假言的推論, hypothetical derivation)을 지원하지 않고 Coq은 Curry--Howard 동치에 기반한다. 우리 체계는 Curry--Howard 동치에 의존하지 않으며 함수 타입이 논리적 $\to$에 대응된다고 생각하지 않는다.
 
@@ -116,7 +116,7 @@ $$p_1,p_2,\ldots,p_n\text{\ \ 및\ \ }p_1, p_2, \ldots, p_n\vdash q$$
 $$p\text{\ \ 및\ \ }p\to q\text{\ \ 및\ \ }p, p\to q\vdash q$$
 로부터 $q$를 유도할 수 있도록 한다. 이러한 방식을 적용하면 일반적으로 추론 규칙인 것들이 우리의 형식 체계에서 공리로 표현되게 되며, 우리의 형식 체계는 체계 내부에서 다른 형식 체계의 동작을 모사할 수 있게 된다. 이는 우리의 체계를 사용하는 자가 체계 내부에 자신만의 형식 체계를 만들 수 있도록 하며, 단순히 공리계를 만들 수 있도록 하는 것보다 더 많은 자유를 부여한다.
 
-그러므로 우리의 언어를 구성하기 위해서는 단순 타입 람다 대수(simply typed lambda calculus)에 $\vdash$ 구문을 추가할 필요가 있다. $\lch$가 \cite{luswt}의 정의~1.1.30과 같이 정의된다고 하자. $\lch$에서는 모든 변항(變項)에 고유한 타입이 지정되어 있어서 타이핑 문맥(typing context)이 필요하지 않다. 이제 $\lch$에 $\vdash$ 구문을 추가하여 새로운 체계 $\lchh$를 만들어 보자. 먼저 타입 생성자 $\vdash$를 추가하기 위하여 \cite{luswt}의 정의~1.1.11의 BNF를 다음과 같이 수정하자.
+그러므로 우리의 언어를 구성하기 위해서는 단순 타입 람다 계산법(simply typed lambda calculus)에 $\vdash$ 구문을 추가할 필요가 있다. $\lch$가 \cite{luswt}의 정의~1.1.30과 같이 정의된다고 하자. $\lch$에서는 모든 변항(變項)에 고유한 타입이 지정되어 있어서 타이핑 문맥(typing context)이 필요하지 않다. 이제 $\lch$에 $\vdash$ 구문을 추가하여 새로운 체계 $\lchh$를 만들어 보자. 먼저 타입 생성자 $\vdash$를 추가하기 위하여 \cite{luswt}의 정의~1.1.11의 BNF를 다음과 같이 수정하자.
 $$\mathds T \Coloneqq \mathbb A\mid\mathds T\to\mathds T\mid\mathds T\vdash\mathds T.$$
 또 $M\vdash N$ 형태의 람다 항이 생성될 수 있도록 \cite{luswt}의 정의~1.1.30(ii)에 다음과 같은 규칙을 추가하자.
 $$M\in\Lchh(A), N\in\Lchh(B)\Rightarrow (M\vdash N)\in\Lchh(A\vdash B).$$
