@@ -82,7 +82,8 @@
 \renewcommand{\refname}{참고문헌}
 \kscntformat{section}{}{}
 
-\title{\titleko\\[1ex]\large\titleen}
+\title{\titleko%\\[1ex]\large\titleen
+}
 \author{\authorname\thanks{\href{mailto:ossia@korea.ac.kr}{\texttt{ossia@korea.ac.kr}}}}
 \date{}
 
@@ -97,7 +98,7 @@
 			
 			\smallskip\noindent {\bf 주제어}: \getkeywords
 		\end{minipage}
-	\end{abstract}\vspace{2em}
+	\end{abstract}\vspace{2em}\vspace{1.5em}
 \end{@twocolumnfalse}
 ]
 
@@ -328,7 +329,7 @@ theorem A_flip(Prop p, Prop q) {
 		(f^\Predicate)&\mapsto (f\vdash\forall f), \\
 		(f^\Predicate, x^\Cls)&\mapsto (\forall f\vdash f(x)).
 	\end{align*}
-	$\forall$은 타입이 $\Predicate\to\Prop$인 무정의용어로 정의되는데,  이외의 공리는 모두 Morse--Kelley 집합론의 공리를 가져온 것이다.
+	이외의 공리는 모두 Morse--Kelley 집합론의 공리를 가져온 것이다.
 \end{description}
 
 우리는 위 체계에서 다음을 포함한 500개 가량의 정리를 증명할 수 있었다.
@@ -353,8 +354,8 @@ theorem A_flip(Prop p, Prop q) {
 또 기능적 측면에서 다음과 같은 문제가 있다.
 
 \begin{itemize}
-	\item 증명 체계 $\langle\mathbb A, \mathcal C, \Gamma_0\rangle$을 명시적으로 선언하는 구문이 없어 체계를 하나만 만들 수 있다. 여러 개의 체계를 만들 수 있다면 두 증명 체계 $\mathcal P_1 = \langle\mathbb A_1, \mathcal C_1, \Gamma_1\rangle$ 및 $\mathcal P_2 = \langle\mathbb A_2, \mathcal C_2, \Gamma_2\rangle$의 형식 언어 $\mathcal L_1$ 및 $\mathcal L_2$ 간의 준동형 사상 $f: \mathcal L_1\to\mathcal L_2$에 관해 생각해 볼 수 있을 것인데, 이때 $f[\Gamma_1]$의 임의의 식이 $\mathcal P_2$에서 증명 가능하다면 임의의 $\varphi\in\mathcal L_1$에 대해 $f(\varphi)$가 $\mathcal P_2$에서 증명 가능할 것이다. 예를 들어 집합론 상에서의 어떤 대상이 페아노 공리계의 공리들을 모두 만족할 때, 그 대상에 대하여는 페아노 공리계의 임의의 정리를 적용할 수 있을 것이다. 그러므로 증명 체계 간의 준동형 사상을 기술하는 구문을 지원할 수도 있을 것이다.
-	\item 형식 언어가 단순 타입 람다 계산법에 기반하고 있으므로 가변 길이 시퀀스에 타입을 지정하지 못하며 이로 인하여 시퀀트 계산법(sequent calculus)의 추론 규칙들을 기술하지 못한다.
+	\item 증명 체계 $\langle\mathbb A, \mathcal C, \Gamma_0\rangle$을 명시적으로 선언하는 구문이 없어 체계를 하나만 만들 수 있다. 여러 개의 체계를 만들 수 있다면 두 증명 체계 $\mathcal P_1 = \langle\mathbb A_1, \mathcal C_1, \Gamma_1\rangle$ 및 $\mathcal P_2 = \langle\mathbb A_2, \mathcal C_2, \Gamma_2\rangle$의 형식 언어 $\mathcal L_1$ 및 $\mathcal L_2$ 간의 준동형 사상 $f: \mathcal L_1\to\mathcal L_2$에 관해 생각해 볼 수 있을 것인데, 이때 $f[\Gamma_1]$의 임의의 식이 $\mathcal P_2$에서 증명 가능하다면 임의의 $\varphi\in\mathcal L_1$에 대해 $f(\varphi)$가 $\mathcal P_2$에서 증명 가능하다는 성질을 사용할 수 있을 것이다. 예를 들어 집합론 상에서의 어떤 대상이 Peano 공리계의 공리들을 모두 만족할 때, 그 대상에 Peano 공리계의 임의의 정리를 적용할 수 있도록 하는 기능을 지원할 수 있을 것이다.
+	\item 형식 언어가 단순 타입 람다 계산법에 기반하고 있으므로 가변 길이 시퀀스에 타입을 지정하지 못하며, 이로 인하여 시퀀트 계산법(sequent calculus) 체계를 기술하지 못한다.
 \end{itemize}
 
 이러한 문제들을 해결하는 것이 향후 연구 주제가 될 것이다.
