@@ -143,21 +143,21 @@ $$\dfrac{M=M'\quad N=N'}{(M\vdash N)=(M'\vdash N')}$$
 
 \section{공리 및 추론 규칙의 정의}
 
-우리의 증명 체계는 증명 체계의 동작을 모사하는 5개의 추론 규칙을 가진다. 가정의 집합 $\Gamma\subseteq\Lchh$ 및 람다 항 $\varphi\in\Lchh$에 대해 시퀀트(sequent)가 $\Gamma\vdash\varphi$ 형태의 식을 뜻한다고 하자. $\Gamma\vdash\varphi$는 ``가정 $\Gamma$로부터 $\varphi$를 증명할 수 있다"는 뜻이라 생각할 수 있다. 이때 $\Gamma\vdash\varphi$는 다음과 같은 공리 및 추론 규칙을 사용하여 유도할 수 있다.
+가정의 집합 $\Gamma\subseteq\Lchh$ 및 람다 항 $\varphi\in\Lchh$에 대해 시퀀트(sequent)가 $\Gamma\Rightarrow\varphi$ 형태의 식을 뜻한다고 하자. $\Gamma\Rightarrow\varphi$는 ``가정 $\Gamma$로부터 $\varphi$를 증명할 수 있다"는 뜻이라 생각할 수 있다. 우리의 증명 체계는 증명 체계의 동작을 모사하는 5개의 추론 규칙을 가진다.
 
 \begin{definition}[공리 및 추론 규칙]
 	우리 증명 체계의 공리 및 추론 규칙은 다음과 같다.
 	
 	\begin{enumerate}
-		\item (R 규칙)\quad 임의의 $\varphi\in\Gamma$에 대하여 $\Gamma\vdash\varphi.$
-		\item ($\vdash$E 규칙)\quad $\dfrac{\Gamma\vdash\varphi\quad\Gamma\vdash(\varphi\vdash\psi)}{\Gamma\vdash\psi}.$
-		\item ($\vdash$I 규칙)\quad $\dfrac{\Gamma\cup\{\varphi\}\vdash\psi}{\Gamma\vdash(\varphi\vdash\psi)}.$
-		\item ($\mapsto$E 규칙)\quad $\varphi\psi\in\Lchh$일 때 $$\dfrac{\Gamma\vdash\varphi}{\Gamma\vdash\varphi\psi}.$$
-		\item ($\mapsto$I 규칙)\quad 임의의 $\psi\in\Gamma$에 대해 $x^A\notin\mathrm{FV}(\psi)$일 때 $$\dfrac{\Gamma\vdash\varphi}{\Gamma\vdash\lambda x^A.\varphi}.$$
+		\item (R 규칙)\quad 임의의 $\varphi\in\Gamma$에 대하여 $\Gamma\Rightarrow\varphi.$
+		\item ($\vdash$E 규칙)\quad $\dfrac{\Gamma\Rightarrow\varphi\quad\Gamma\Rightarrow(\varphi\vdash\psi)}{\Gamma\Rightarrow\psi}.$
+		\item ($\vdash$I 규칙)\quad $\dfrac{\Gamma\cup\{\varphi\}\Rightarrow\psi}{\Gamma\Rightarrow(\varphi\vdash\psi)}.$
+		\item ($\mapsto$E 규칙)\quad $\varphi\psi\in\Lchh$일 때 $$\dfrac{\Gamma\Rightarrow\varphi}{\Gamma\Rightarrow\varphi\psi}.$$
+		\item ($\mapsto$I 규칙)\quad $x^A\notin\mathcal C$일 때 $$\dfrac{\Gamma\Rightarrow\varphi}{\Gamma\Rightarrow\lambda x^A.\varphi}.$$
 	\end{enumerate}
 \end{definition}
 
-$\Gamma\vdash\varphi$의 $\vdash$와 $\varphi\vdash\psi$의 $\vdash$는 다른 기호임에 주의하라. 공리 및 추론 규칙이 모두 시퀀트에 관한 것인 이유는 우리 체계가 가언적 추론을 지원하는 자연 연역 체계이기 때문이다. 이때 $\vdash$E 및 $\vdash$I 규칙에 의하여 $\vdash$ 구문이 추론 규칙처럼 작동하며 $\mapsto$E 및 $\mapsto$I 규칙에 의하여 함수로 표현한 스키마들이 스키마처럼 작동한다. 특히 $\vdash$I 규칙은 유도 가능한 규칙(derivable rule)을 유도할 수 있도록 하며, 이로 인하여 우리 체계가 가언적 추론을 지원하게 된다.
+공리 및 추론 규칙이 모두 시퀀트에 관한 것인 이유는 우리 체계가 가언적 추론을 지원하는 자연 연역 체계이기 때문이다. 이때 $\vdash$E 및 $\vdash$I 규칙에 의하여 $\vdash$ 구문이 추론 규칙처럼 작동하며 $\mapsto$E 및 $\mapsto$I 규칙에 의하여 함수로 표현한 스키마들이 스키마처럼 작동한다. 특히 $\vdash$I 규칙은 유도 가능한 규칙(derivable rule)을 유도할 수 있도록 하며, 이로 인하여 우리 체계가 가언적 추론을 지원하게 된다.
 
 \begin{example} \label{example:proof}
 	$$\Gamma = \left\{\begin{array}{l}
@@ -166,31 +166,31 @@ $\Gamma\vdash\varphi$의 $\vdash$와 $\varphi\vdash\psi$의 $\vdash$는 다른 �
 		\lambda p^\Prop\lambda q^\Prop.({\land}pq\vdash q)
 	\end{array}\right\}$$
 	일 때
-	$$\Gamma\vdash \lambda p^\Prop\lambda q^\Prop.({\land}pq\vdash{\land}qp)$$
+	$$\Gamma\Rightarrow\lambda p^\Prop\lambda q^\Prop.({\land}pq\vdash{\land}qp)$$
 	는 그림~\ref{fig:proof1}\과 같이 증명할 수 있으며, 이는 Fitch 다이어그램으로 그림~\ref{fig:proof2}\와 같이 더 간단히 표현할 수 있다. 단 그림~\ref{fig:proof2}에서 연속된 $\mapsto$E 또는 $\vdash$E, $\mapsto$I는 하나로 표현되었다.
 	
 	\begin{figure}[bt] \centering\small\fbox{
 		\begin{tabular}{lll}
-			1 & $\Gamma\cup\{{\land}p'q'\}\vdash {\land}p'q'$ & R \\
-			2 & $\Gamma\cup\{{\land}p'q'\}\vdash \lambda p\lambda q.({\land}pq\vdash p)$ & R \\
-			3 & $\Gamma\cup\{{\land}p'q'\}\vdash \lambda q.({\land}p'q\vdash p')$ & $\mapsto$E (2) \\
-			4 & $\Gamma\cup\{{\land}p'q'\}\vdash ({\land}p'q'\vdash p')$ & $\mapsto$E (3) \\
-			5 & $\Gamma\cup\{{\land}p'q'\}\vdash p'$ & $\vdash$E (1, 4) \\
-			6 & $\Gamma\cup\{{\land}p'q'\}\vdash \lambda p\lambda q.({\land}pq\vdash q)$ & R \\
-			7 & $\Gamma\cup\{{\land}p'q'\}\vdash \lambda q.({\land}p'q\vdash q)$ & $\mapsto$E (6) \\
-			8 & $\Gamma\cup\{{\land}p'q'\}\vdash ({\land}p'q'\vdash q')$ & $\mapsto$E (7) \\
-			9 & $\Gamma\cup\{{\land}p'q'\}\vdash q'$ & $\vdash$E (1, 8) \\
-			10 & $\Gamma\cup\{{\land}p'q'\}\vdash \lambda p\lambda q.(p\vdash (q\vdash{\land}pq))$ & R \\
-			11 & $\Gamma\cup\{{\land}p'q'\}\vdash \lambda q.(q'\vdash(q\vdash{\land}q'q))$ & $\mapsto$E (10) \\
-			12 & $\Gamma\cup\{{\land}p'q'\}\vdash (q'\vdash(p'\vdash{\land}q'p'))$ & $\mapsto$E (11) \\
-			13 & $\Gamma\cup\{{\land}p'q'\}\vdash (p'\vdash{\land}q'p')$ & $\vdash$E (9, 12) \\
-			14 & $\Gamma\cup\{{\land}p'q'\}\vdash {\land}q'p'$ & $\vdash$E (5, 13) \\
-			15 & $\Gamma\vdash ({\land}p'q'\vdash {\land}q'p')$ & $\vdash$I (14) \\
-			16 & $\Gamma\vdash \lambda q'.({\land}p'q'\vdash {\land}q'p')$ & $\mapsto$I (15) \\
-			17 & $\Gamma\vdash \lambda p'\lambda q'.({\land}p'q'\vdash {\land}q'p')$ & $\mapsto$I (16) \\
+			1 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow {\land}p'q'$ & R \\
+			2 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow \lambda p\lambda q.({\land}pq\vdash p)$ & R \\
+			3 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow \lambda q.({\land}p'q\vdash p')$ & $\mapsto$E (2) \\
+			4 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow ({\land}p'q'\vdash p')$ & $\mapsto$E (3) \\
+			5 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow p'$ & $\vdash$E (1, 4) \\
+			6 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow \lambda p\lambda q.({\land}pq\vdash q)$ & R \\
+			7 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow \lambda q.({\land}p'q\vdash q)$ & $\mapsto$E (6) \\
+			8 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow ({\land}p'q'\vdash q')$ & $\mapsto$E (7) \\
+			9 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow q'$ & $\vdash$E (1, 8) \\
+			10 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow \lambda p\lambda q.(p\vdash (q\vdash{\land}pq))$ & R \\
+			11 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow \lambda q.(q'\vdash(q\vdash{\land}q'q))$ & $\mapsto$E (10) \\
+			12 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow (q'\vdash(p'\vdash{\land}q'p'))$ & $\mapsto$E (11) \\
+			13 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow (p'\vdash{\land}q'p')$ & $\vdash$E (9, 12) \\
+			14 & $\Gamma\cup\{{\land}p'q'\}\Rightarrow {\land}q'p'$ & $\vdash$E (5, 13) \\
+			15 & $\Gamma\Rightarrow ({\land}p'q'\vdash {\land}q'p')$ & $\vdash$I (14) \\
+			16 & $\Gamma\Rightarrow \lambda q'.({\land}p'q'\vdash {\land}q'p')$ & $\mapsto$I (15) \\
+			17 & $\Gamma\Rightarrow \lambda p'\lambda q'.({\land}p'q'\vdash {\land}q'p')$ & $\mapsto$I (16) \\
 			& \qquad\quad$=\lambda p\lambda q.({\land}pq\vdash {\land}qp)$ & $\alpha$ 동치
 		\end{tabular}}
-		\caption{$\Gamma\vdash \lambda p^\Prop\lambda q^\Prop.({\land}pq\vdash{\land}qp)$의 증명} \label{fig:proof1}
+		\caption{$\Gamma\Rightarrow \lambda p^\Prop\lambda q^\Prop.({\land}pq\vdash{\land}qp)$의 증명} \label{fig:proof1}
 	\end{figure}
 	
 	\begin{figure}[bt] \centering\small\fbox{
@@ -223,7 +223,7 @@ $\Gamma\vdash\varphi$의 $\vdash$와 $\varphi\vdash\psi$의 $\vdash$는 다른 �
 증명 체계는 원시 타입의 집합 $\mathbb A$, 정항의 집합 $\mathcal C\subseteq\mathsf V^{\mathds T}$, 공리의 집합 $\Gamma_0\subseteq\mathcal L$에 의해 결정된다. 이때 어떤 명제 $\varphi\in\mathcal L$이 체계 $\langle\mathbb A,\mathcal C,\Gamma_0\rangle$ 상에서 증명 가능하다는 것은 다음과 같은 뜻이다.
 
 \begin{definition}[증명 가능성]
-	$\langle\mathbb A,\mathcal C,\Gamma_0\rangle$ 상에서 $\varphi\in\mathcal L$이 증명 가능하다는 것은 $\Gamma_0\vdash\varphi$가 유도 가능하다는 뜻이다.
+	$\langle\mathbb A,\mathcal C,\Gamma_0\rangle$ 상에서 $\varphi\in\mathcal L$이 증명 가능하다는 것은 $\Gamma_0\Rightarrow\varphi$가 유도 가능하다는 뜻이다.
 \end{definition}
 
 이제부터 함수 타입 및 $\vdash$ 타입을 언커링(uncurrying) 하여 표시하자. $\lambda x^A\ldots\lambda z^C.M$은 $(x^A, \ldots, z^C)\mapsto M$이라 쓰자. 또 $fxy$ 대신 $f(x, y)$라 쓰고 $p\vdash q\vdash r$ 대신 $p, q\vdash r$라 쓰자. $\land$ 등의 이항연산자의 경우 ${\land}(p, q)$ 대신 $p\land q$라고도 쓸 수 있다.
