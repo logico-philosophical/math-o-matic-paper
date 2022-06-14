@@ -354,7 +354,7 @@ theorem A_flip(Prop p, Prop q) {
 또 기능적 측면에서 다음과 같은 문제가 있다.
 
 \begin{itemize}
-	\item 증명 체계 $\langle\mathbb A, \mathcal C, \Gamma_0\rangle$을 명시적으로 선언하는 구문이 없어 체계를 하나만 만들 수 있다. 여러 개의 체계를 만들 수 있다면 두 증명 체계 $\mathcal P_1 = \langle\mathbb A_1, \mathcal C_1, \Gamma_1\rangle$ 및 $\mathcal P_2 = \langle\mathbb A_2, \mathcal C_2, \Gamma_2\rangle$의 형식 언어 $\mathcal L_1$ 및 $\mathcal L_2$ 간의 준동형 사상 $f: \mathcal L_1\to\mathcal L_2$에 관해 생각해 볼 수 있을 것인데, 이때 $f[\Gamma_1]$의 임의의 식이 $\mathcal P_2$에서 증명 가능하다면 임의의 $\varphi\in\mathcal L_1$에 대해 $f(\varphi)$가 $\mathcal P_2$에서 증명 가능하다는 성질을 사용할 수 있을 것이다. 예를 들어 집합론 상에서의 어떤 대상이 Peano 공리계의 공리들을 모두 만족할 때, 그 대상에 Peano 공리계의 임의의 정리를 적용할 수 있도록 하는 기능을 지원할 수 있을 것이다.
+	\item 증명 체계 $\langle\mathbb A, \mathcal C, \Gamma_0\rangle$을 명시적으로 선언하는 구문이 없어 체계를 하나만 만들 수 있다. 여러 개의 체계를 만들 수 있다면 두 증명 체계 $\mathcal P_1 = \langle\mathbb A_1, \mathcal C_1, \Gamma_1\rangle$ 및 $\mathcal P_2 = \langle\mathbb A_2, \mathcal C_2, \Gamma_2\rangle$의 형식 언어 $\mathcal L_1$ 및 $\mathcal L_2$ 간의 준동형 사상 $f: \mathcal L_1\to\mathcal L_2$에 관해 생각해 볼 수 있을 것이다. $\mathcal T_i$가 증명 체계 $\mathcal P_i$에서 증명할 수 있는 모든 식의 집합을 뜻한다고 하자. 이때 $f[\Gamma_1]\subseteq \mathcal T_2$이면 $f[\mathcal T_1]\subseteq \mathcal T_2$라는 성질을 사용할 수 있을 것이다. 예를 들어 집합론 상에서의 어떤 대상이 Peano 공리계의 공리들을 모두 만족할 때, 그 대상에 Peano 공리계의 임의의 정리를 적용할 수 있도록 하는 기능을 지원할 수 있을 것이다.
 	\item 형식 언어가 단순 타입 람다 계산법에 기반하고 있으므로 가변 길이 시퀀스에 타입을 지정하지 못하며, 이로 인하여 시퀀트 계산법(sequent calculus) 체계를 기술하지 못한다.
 \end{itemize}
 
